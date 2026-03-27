@@ -63,7 +63,7 @@
     padding: 52px 60px;
     position: relative;
     animation: fadeIn 0.25s ease;
-    zoom: 0.9;
+    zoom: 0.7;
   }
   .slide.active { display: flex; flex-direction: column; justify-content: center; }
 
@@ -409,7 +409,7 @@
 <body>
 
 <div id="progress-bar"><div id="progress-fill"></div></div>
-<div id="slide-counter">1 / 19</div>
+<div id="slide-counter">1 / 20</div>
 
 <div id="slides-container">
 
@@ -507,13 +507,14 @@ subdirectory called kanban/. /plan</pre>
       <li>Ouvrez Claude Code dans votre terminal</li>
       <li>Copiez et envoyez la requête ci-dessus</li>
       <li>Lisez le plan — <strong>ne validez pas encore</strong></li>
+      <li>Demandez à Claude d'ajouter un statut <strong>« Waiting for approval »</strong> entre « To Do » et « In Progress » dans le plan — <em>sans encore valider</em></li>
     </ol>
   </div>
 
   <!-- SLIDE 5b : Attention — ne pas continuer -->
   <div class="slide slide-theory" id="slide-6">
     <h2>Attendez avant de continuer !</h2>
-    <p>Après avoir affiché le plan, Claude Code peut proposer de l'exécuter immédiatement — sous deux formes selon vos skills :</p>
+    <p>Après avoir affiché le plan, Claude Code peut proposer de l'exécuter immédiatement :</p>
     <div class="prompt-block" style="margin-top:12px">
       <pre>Claude has written up a plan and is ready to execute.
 Would you like to proceed?
@@ -522,18 +523,26 @@ Would you like to proceed?
   3. Yes, manually approve edits
   4. Type here to tell Claude what to change</pre>
     </div>
-    <p style="margin-top:12px">Ou, si le skill <code>executing-plans</code> est actif :</p>
-    <div class="prompt-block" style="margin-top:8px">
-      <pre>❯ 1. Subagent-Driven (this session) — fresh subagent per task, review between tasks
-  2. Parallel Session (separate) — open new session with executing-plans skill</pre>
-    </div>
     <div class="highlight-box highlight-warning" style="margin-top:16px">
       <p><strong>Ne choisissez aucune option pour l'instant.</strong> On activera Ctrl-O d'abord dans l'exercice suivant — sans ça, les premières actions partiront sans surveillance.</p>
     </div>
   </div>
 
-  <!-- SLIDE 7 : Débrief exercice 1 -->
+  <!-- SLIDE 6b : Autre variante — executing-plans actif -->
   <div class="slide slide-theory" id="slide-7">
+    <h2>Autre variante possible</h2>
+    <p>Si le skill <code>executing-plans</code> est actif, Claude propose une interface différente :</p>
+    <div class="prompt-block" style="margin-top:12px">
+      <pre>❯ 1. Subagent-Driven (this session) — fresh subagent per task, review between tasks
+  2. Parallel Session (separate) — open new session with executing-plans skill</pre>
+    </div>
+    <div class="highlight-box highlight-warning" style="margin-top:16px">
+      <p><strong>Ne choisissez aucune option pour l'instant.</strong> On activera Ctrl-O d'abord.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 8 : Débrief exercice 1 -->
+  <div class="slide slide-theory" id="slide-8">
     <h2>Débrief — /plan</h2>
     <p>Ce que vous avez observé :</p>
     <ul>
@@ -546,8 +555,8 @@ Would you like to proceed?
     </div>
   </div>
 
-  <!-- SLIDE 8 : Ctrl-O — le problème -->
-  <div class="slide slide-theory" id="slide-8">
+  <!-- SLIDE 9 : Ctrl-O — le problème -->
+  <div class="slide slide-theory" id="slide-9">
     <h2>Ctrl-O : que fait Claude vraiment ?</h2>
     <span class="big-emoji">🔍</span>
     <p>Vous avez votre plan — parfait. Mais quand Claude va l'exécuter, il va effectuer des <strong>actions concrètes</strong> sur votre système, dans l'ordre qu'il choisit.</p>
@@ -565,8 +574,8 @@ Would you like to proceed?
     </div>
   </div>
 
-  <!-- SLIDE 9 : Ctrl-O — les actions visibles -->
-  <div class="slide slide-theory" id="slide-9">
+  <!-- SLIDE 10 : Ctrl-O — les actions visibles -->
+  <div class="slide slide-theory" id="slide-10">
     <h2>Ctrl-O — les actions de Claude</h2>
     <p>Appuyer sur <strong>Ctrl-O</strong> (Windows &amp; Mac) active le mode "verbose" : chaque action est affichée avant d'être exécutée.</p>
     <p>Les quatre grandes catégories d'actions :</p>
@@ -581,8 +590,8 @@ Would you like to proceed?
     </div>
   </div>
 
-  <!-- SLIDE 10 : EXERCICE 2 -->
-  <div class="slide slide-exercise" id="slide-10">
+  <!-- SLIDE 11 : EXERCICE 2 -->
+  <div class="slide slide-exercise" id="slide-11">
     <span class="badge badge-exercise">Exercice 2</span>
     <span class="badge badge-timer">7 min</span>
     <h2>Exécuter le plan sous surveillance</h2>
@@ -597,8 +606,8 @@ Would you like to proceed?
     </div>
   </div>
 
-  <!-- SLIDE 11 : Débrief exercice 2 -->
-  <div class="slide slide-theory" id="slide-11">
+  <!-- SLIDE 12 : Débrief exercice 2 -->
+  <div class="slide slide-theory" id="slide-12">
     <h2>Débrief — Ctrl-O</h2>
     <p>Ce que vous avez observé :</p>
     <ul>
@@ -618,8 +627,8 @@ Would you like to proceed?
     </div>
   </div>
 
-  <!-- SLIDE 12 : Skills — le problème -->
-  <div class="slide slide-theory" id="slide-12">
+  <!-- SLIDE 13 : Skills — le problème -->
+  <div class="slide slide-theory" id="slide-13">
     <h2>Le problème : des comportements à répéter</h2>
     <span class="big-emoji">🔄</span>
     <p>Certaines bonnes pratiques, on veut que Claude les applique <strong>systématiquement</strong> :</p>
@@ -633,8 +642,8 @@ Would you like to proceed?
     </div>
   </div>
 
-  <!-- SLIDE 13 : Skills — qu'est-ce que c'est -->
-  <div class="slide slide-theory" id="slide-13">
+  <!-- SLIDE 14 : Skills — qu'est-ce que c'est -->
+  <div class="slide slide-theory" id="slide-14">
     <h2>Les skills : l'analogie de la recette</h2>
     <div class="highlight-box highlight-purple">
       <p><strong>Un skill, c'est une recette de cuisine.</strong><br>
@@ -647,23 +656,7 @@ Would you like to proceed?
       <li>Claude le lit et l'applique comme une instruction permanente pour la tâche</li>
     </ul>
     <div class="highlight-box highlight-success" style="margin-top:16px">
-      <p>Des skills pré-installés existent déjà : <code>simplify</code>, <code>systematic-debugging</code>, <code>tdd</code>…</p>
-    </div>
-  </div>
-
-  <!-- SLIDE 14 : DÉMO FORMATEUR -->
-  <div class="slide slide-demo" id="slide-14">
-    <span class="badge badge-demo">Démo formateur</span>
-    <span class="badge badge-timer">3 min</span>
-    <h2>Le skill "simplify" en live</h2>
-    <p>Le formateur montre en direct :</p>
-    <ol class="steps">
-      <li>Ouvrir la conversation de l'exercice 2 — le code Kanban est déjà là</li>
-      <li>Invoquer le skill <code>simplify</code> → Claude relit le code et identifie ce qui peut être simplifié, réutilisé ou amélioré</li>
-      <li>Observer : Claude ne réécrit pas tout — il cible précisément, avec une justification pour chaque changement</li>
-    </ol>
-    <div class="highlight-box highlight-success" style="margin-top:12px">
-      <p><strong>Ce qu'on observe :</strong> sans le skill, Claude aurait pu réécrire le tout. Avec le skill, il applique une grille de lecture précise — la même à chaque fois.</p>
+      <p>Des skills pré-installés existent déjà : <code>/help</code>, <code>systematic-debugging</code>, <code>tdd</code>…</p>
     </div>
   </div>
 
@@ -701,20 +694,25 @@ Would you like to proceed?
   <div class="slide slide-exercise" id="slide-16">
     <span class="badge badge-exercise">Exercice 3</span>
     <span class="badge badge-timer">5 min</span>
-    <h2>Invoquer le skill simplify</h2>
+    <h2>Invoquer /help</h2>
     <ol class="steps">
-      <li>Tapez <code>/clear</code> — la conversation se vide, mais vos fichiers restent intacts sur le disque</li>
-      <li>Envoyez la requête suivante pour invoquer le skill sur le code existant :</li>
+      <li>Découvrez les commandes disponibles :</li>
     </ol>
-    <div class="prompt-block">
-      <div class="prompt-label">Requête</div>
+    <div class="prompt-block" style="margin-top:8px">
+      <div class="prompt-label">Commande</div>
       <button class="copy-btn" onclick="copyPrompt(this)">Copier</button>
-      <pre>Review the kanban app in the current directory. /simplify</pre>
+      <pre>/help</pre>
     </div>
-    <ol class="steps" style="counter-reset: step 2">
-      <li>Claude relit le code et applique le skill</li>
-      <li>Identifiez : qu'est-ce qu'il a ciblé ? Pourquoi ?</li>
-      <li>Acceptez ou refusez les modifications proposées</li>
+    <ol class="steps" style="counter-reset: step 1; margin-top:12px">
+      <li>Videz le contexte entre deux tâches :</li>
+    </ol>
+    <div class="prompt-block" style="margin-top:8px">
+      <div class="prompt-label">Commande</div>
+      <button class="copy-btn" onclick="copyPrompt(this)">Copier</button>
+      <pre>/clear</pre>
+    </div>
+    <ol class="steps" style="counter-reset: step 2; margin-top:12px">
+      <li>Observez : la conversation est vide, mais vos fichiers sont intacts sur le disque</li>
     </ol>
     <div class="highlight-box highlight-info" style="margin-top:12px">
       <p><strong>/clear ne supprime pas les fichiers</strong> — il remet le contexte à zéro. C'est utile pour repartir proprement entre deux tâches.</p>
@@ -728,7 +726,7 @@ Would you like to proceed?
     <ul>
       <li><code>/clear</code> vide la conversation — mais les fichiers sur disque sont inchangés</li>
       <li>Claude a appliqué une grille précise — pas sa propre interprétation de "améliorer"</li>
-      <li>Le résultat est prévisible et reproductible : invoquer <code>simplify</code> demain donnera la même approche</li>
+      <li>Le résultat est prévisible et reproductible : invoquer <code>/help</code> demain donnera la même approche</li>
       <li>Vous gardez le contrôle : vous acceptez ou refusez chaque modification</li>
     </ul>
     <div class="key-point">
@@ -736,8 +734,58 @@ Would you like to proceed?
     </div>
   </div>
 
-  <!-- SLIDE 18 : Récap — les 3 outils -->
-  <div class="slide slide-recap" id="slide-18">
+  <!-- SLIDE 18 : Skills vs Agents -->
+  <section class="slide slide-theory" id="slide-18">
+    <div class="badge badge-theory">Concept</div>
+    <h2>Skills vs Agents : quand utiliser quoi ?</h2>
+    <p style="color:#555;margin-bottom:24px;">Deux outils puissants, deux philosophies différentes.</p>
+
+    <div class="two-col">
+      <div class="highlight-box" style="border-left: 4px solid #6366f1; background: #f5f3ff;">
+        <h3 style="color:#6366f1;">⚙️ Skills</h3>
+        <p><strong>Comportements réutilisables</strong> définis par l'utilisateur, stockés dans <code>~/.claude/skills/</code> et invoqués avec <code>/skill-name</code>.</p>
+        <p><strong style="color:#16a34a;">✅ Avantages</strong></p>
+        <ul>
+          <li>Simple à créer (fichier Markdown)</li>
+          <li>Comportement prévisible et cohérent</li>
+          <li>Réutilisable entre sessions</li>
+          <li>Léger — pas d'appels API supplémentaires</li>
+        </ul>
+        <p><strong style="color:#dc2626;">❌ Inconvénients</strong></p>
+        <ul>
+          <li>Limité au comportement prédéfini</li>
+          <li>Peu adaptatif face à des scénarios complexes</li>
+          <li>Toujours dans le même contexte de conversation</li>
+        </ul>
+      </div>
+
+      <div class="highlight-box" style="border-left: 4px solid #f59e0b; background: #fffbeb;">
+        <h3 style="color:#f59e0b;">🤖 Agents</h3>
+        <p><strong>Sous-processus autonomes</strong> lancés par Claude via l'outil <code>Task</code> pour déléguer des tâches complexes.</p>
+        <p><strong style="color:#16a34a;">✅ Avantages</strong></p>
+        <ul>
+          <li>Autonomes et adaptatifs</li>
+          <li>Peuvent s'exécuter en parallèle</li>
+          <li>Contexte isolé (protège la fenêtre principale)</li>
+          <li>Spécialisés par type (Explore, Plan, général)</li>
+        </ul>
+        <p><strong style="color:#dc2626;">❌ Inconvénients</strong></p>
+        <ul>
+          <li>Consomme plus de tokens / coût API plus élevé</li>
+          <li>Moins prévisible — comportement variable</li>
+          <li>Plus lent (plusieurs tours de traitement)</li>
+          <li>Déclenché par Claude, pas directement par l'utilisateur</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="highlight-box highlight-info" style="margin-top:16px;">
+      <strong>💡 Règle simple :</strong> Utilisez un <strong>skill</strong> pour des comportements répétables que <em>vous</em> voulez contrôler. Laissez Claude utiliser des <strong>agents</strong> pour décomposer et paralléliser les tâches complexes automatiquement.
+    </div>
+  </section>
+
+  <!-- SLIDE 19 : Récap — les 3 outils -->
+  <div class="slide slide-recap" id="slide-19">
     <h2>Les 3 outils en un coup d'œil</h2>
     <div class="recap-grid">
       <div class="recap-card card-plan">
@@ -761,42 +809,21 @@ Would you like to proceed?
     </div>
   </div>
 
-  <!-- SLIDE 19 : Preview Session 2 -->
-  <div class="slide slide-theory" id="slide-19">
-    <h2>Session 2 — Créer vos propres skills</h2>
-    <p>Vous avez utilisé des skills existants. La prochaine fois, vous apprendrez à créer les vôtres.</p>
-    <p>Le programme de la session 2 est en cours de préparation.</p>
-    <div class="highlight-box highlight-purple" style="margin-top:16px">
-      <p><strong>D'ici là :</strong> notez un comportement que vous aimeriez que Claude adopte systématiquement. Ce sera la base de votre premier skill.</p>
-    </div>
-  </div>
-
   <!-- SLIDE 20 : Q&A + Ressources -->
   <div class="slide slide-theory" id="slide-20">
     <div class="qa-box">
       <span class="big-emoji">💬</span>
       <h2>Questions &amp; Ressources</h2>
     </div>
-    <div class="two-col" style="margin-top: 8px">
-      <div class="col-box">
-        <h3>Raccourcis à retenir</h3>
-        <ul>
-          <li><code>/plan</code> — planifier avant d'agir</li>
-          <li><code>Ctrl-O</code> — voir les actions (Windows &amp; Mac)</li>
-          <li><code>/[nom-du-skill]</code> — invoquer un skill</li>
-          <li><code>/clear</code> — vider le contexte de la conversation</li>
-          <li><code>/help</code> — aide Claude Code</li>
-        </ul>
-      </div>
-      <div class="col-box">
-        <h3>Skills disponibles</h3>
-        <ul>
-          <li><code>simplify</code> — relire et améliorer le code</li>
-          <li><code>systematic-debugging</code> — déboguer méthodiquement</li>
-          <li><code>tdd</code> — tests en premier</li>
-          <li><code>writing-plans</code> — plans structurés</li>
-        </ul>
-      </div>
+    <div style="margin-top: 8px">
+      <h3>Raccourcis à retenir</h3>
+      <ul>
+        <li><code>/plan</code> — planifier avant d'agir</li>
+        <li><code>Ctrl-O</code> — voir les actions (Windows &amp; Mac)</li>
+        <li><code>/[nom-du-skill]</code> — invoquer un skill</li>
+        <li><code>/clear</code> — vider le contexte de la conversation</li>
+        <li><code>/help</code> — aide Claude Code</li>
+      </ul>
     </div>
   </div>
 
@@ -819,19 +846,19 @@ Would you like to proceed?
     4: '/plan — méthode',
     5: 'Exercice 1',
     6: 'Attendez !',
-    7: 'Débrief /plan',
-    8: 'Ctrl-O — problème',
-    9: 'Ctrl-O — actions',
-    10: 'Exercice 2',
-    11: 'Débrief Ctrl-O',
-    12: 'Skills — problème',
-    13: 'Skills — concept',
-    14: 'Démo formateur',
+    7: 'Autre variante',
+    8: 'Débrief /plan',
+    9: 'Ctrl-O — problème',
+    10: 'Ctrl-O — actions',
+    11: 'Exercice 2',
+    12: 'Débrief Ctrl-O',
+    13: 'Skills — problème',
+    14: 'Skills — concept',
     15: '/clear — contexte',
     16: 'Exercice 3',
     17: 'Débrief Skills',
-    18: 'Récap',
-    19: 'Preview S2',
+    18: 'Skills vs Agents',
+    19: 'Récap',
     20: 'Q&A'
   };
 
